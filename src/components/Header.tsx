@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 
@@ -29,9 +30,20 @@ export default function Header() {
           <a
             key={item.label}
             href={item.href}
-            className={`flex items-center justify-center gap-2.5 font-mono text-lg text-white/85 tracking-tighter font-thin`}
+            className="relative flex items-center justify-center gap-2.5 font-mono text-md text-white/85 tracking-tighter font-thin pb-1 group"
           >
-            {item.label}
+            <span className="group-hover:text-white transition-colors duration-200">
+              {item.label}
+            </span>
+
+            {/* Left line that grows from left */}
+            <span className="absolute bottom-0 left-0 h-[2px] bg-white/90 w-0 group-hover:w-1/2 transition-all duration-300 ease-out" />
+
+            {/* Right line that grows from right */}
+            <span className="absolute bottom-0 right-0 h-[2px] bg-white/90 w-0 group-hover:w-1/2 transition-all duration-300 ease-out" />
+
+            {/* Subtle glow behind text */}
+            <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-sm blur-sm -z-10 transition-all duration-200" />
           </a>
         ))}
       </nav>
