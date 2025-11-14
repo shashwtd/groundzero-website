@@ -46,15 +46,23 @@ export default function Signals() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Title Section */}
-          <div className="text-left mb-12">
+          <div className="text-center mb-12">
             <motion.h1
-              className="font-mono font-normal text-center text-[28px] sm:text-[32px] md:text-[36px] leading-tight tracking-tight text-white/90"
+              className="font-mono font-normal text-[28px] sm:text-[32px] md:text-[36px] leading-tight tracking-tight text-white/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
               SIGNALS
             </motion.h1>
+            <motion.p
+              className="font-mono font-light text-[14px] sm:text-[15px] md:text-[16px] text-white/50 mt-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Making the Work Visible
+            </motion.p>
           </div>
 
           {/* Content Container with subtle border */}
@@ -79,11 +87,26 @@ export default function Signals() {
                     {text}
                   </motion.p>
                 ))}
+                <motion.div
+                  className="text-right pt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 + (paragraphs.length * 0.1), ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <a
+                    href="https://x.com/himanshustwts"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block font-mono font-light text-[13px] sm:text-[14px] text-white/40 hover:text-white/70 transition-colors duration-200"
+                  >
+                    -@himanshustwts
+                  </a>
+                </motion.div>
               </div>
             </div>
 
             {/* Form Container */}
-            <motion.div
+            {/* <motion.div
               className="bg-white/[0.02] border border-white/[0.05] rounded-2xl backdrop-blur-sm p-6 sm:p-8 md:p-10 h-max"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,7 +119,7 @@ export default function Signals() {
                 title="SIGNALS Application Form"
                 style={{ border: 'none' }}
               />
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </motion.article>
       </main>
