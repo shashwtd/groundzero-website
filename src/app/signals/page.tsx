@@ -8,8 +8,8 @@ const paragraphs = [
     "I've been thinking about what work looks like post-AGI. It'll feel less like grinding and more like choosing the problems that actually matter to you. The thing is - researchers and builders are already living this. They're shipping experimental models, breaking paradigms, building tools that change how we work.",
     "But here's what keeps me up: the pace is insane. So much incredible work either gets buried in feeds, never leaves the lab, or just... disappears. The people doing the most interesting things often don't have the bandwidth or platform to show what they're actually building. And that sucks.",
     "So we're building SIGNALS on Ground Zero. It's pretty simple - an open platform for two groups: researchers and builders creating novel work, and founders shipping products that matter. The idea is to give you a space to show the real stuff. Not the polished launch video. Not the marketing deck. The messy parts. The pivots. The \"we tried this and it broke so we did that instead\" moments. The technical tradeoffs nobody talks about because they're too in the weeds.",
-    "You keep full ownership of everything. We're not here to take your content and build on it - we're here to help more people see what you're doing. We'll help with technical writing if you want it, feature your work on the Ground Zero page, push it through networks that actually care, and connect you with people working on adjacent problems. The goal is exposure to people who get it, organic connections, and a place where experimental work doesn't get lost.",
-    "If you're building something real and want to show it, we want to help.",
+    "You keep full ownership of everything. We're here to help more people see what you're doing. Publish a video content on Ground Zero Youtube. We'll help with writings if you want it, feature your work on the Ground Zero page, push it through networks that actually care, and connect you with people working on adjacent problems. The goal is exposure to people who get it, organic connections, and a place where experimental work doesn't get lost.",
+    "If you're building something real and want to showcase to the community, we are here to give you an open platform.",
 ];
 
 export default function Signals() {
@@ -51,7 +51,7 @@ export default function Signals() {
                 />
             </div>
 
-            <main className="relative flex-1 w-full pt-32 px-6 sm:px-10 md:px-16">
+            <main className="relative flex-1 w-full pt-32 px-0 sm:px-10 md:px-16">
                 {/* Content */}
                 <motion.article
                     className="relative z-10 w-full max-w-4xl mx-auto"
@@ -108,18 +108,18 @@ export default function Signals() {
                         }}
                     >
                         {/* Text Content */}
-                        <div className="bg-white/[0.05] px-8 py-10 flex flex-col items-center justify-center gap-2.5">
+                        <div className="bg-white/[0.05] px-8 md:px-8 py-8 md:py-10 flex flex-col items-center justify-center gap-2.5">
                             <div className="w-full space-y-4">
                                 {paragraphs.map((text, index) => (
                                     <p
                                         key={index}
-                                        className="font-mono font-normal text-[17px] leading-normal tracking-[-1.02px] text-white/80 text-justify"
+                                        className="font-mono font-normal text-[15px] md:text-[17px] leading-normal tracking-[-1.02px] text-white/80 text-justify"
                                     >
                                         {text}
                                     </p>
                                 ))}
                             </div>
-                            <p className="font-mono font-normal text-[17px] leading-normal tracking-[-1.02px] text-white w-full">
+                            <p className="font-mono font-normal text-[17px] leading-normal tracking-[-1.02px] text-white w-full mt-4">
                                 <span>- </span>
                                 <a
                                     href="https://x.com/himanshustwts"
@@ -133,7 +133,7 @@ export default function Signals() {
                         </div>
 
                         {/* Form Container */}
-                        <div className="bg-white/5 px-8 py-10 mt-8">
+                        <div className="bg-white/5 px-5 md:px-8 py-8 md:py-10 mt-1 md:mt-8">
                             {/* <div className="flex justify-start mb-6">
                                 <Image
                                     src="/signals-logo.svg"

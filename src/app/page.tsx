@@ -13,11 +13,11 @@ export default function Home() {
         <HeroBackground />
 
         {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center gap-8 md:gap-12 pt-0 pb-20 px-4 md:px-0">
+        <div className="relative z-10 flex flex-col items-center gap-8 md:gap-12 pt-0 pb-20 md:pb-20 px-4 md:px-0">
           <div className="flex flex-col items-center justify-center gap-4 md:gap-6 text-center">
-            <h1 className="flex flex-col items-center gap-px font-serif text-[32px] sm:text-[48px] md:text-[68px] leading-tight md:leading-18 tracking-tighter">
+            <h1 className="flex flex-col items-center gap-px font-serif text-[56px] md:text-[68px] leading-[56px] md:leading-18 tracking-[-3.92px] md:tracking-tighter">
               <motion.span
-                className="w-max text-white"
+                className="w-full max-w-[342px] md:w-max md:max-w-none text-white"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -25,7 +25,7 @@ export default function Home() {
                 Exploring the ideas and breakthroughs
               </motion.span>
               <motion.span
-                className="w-max text-white/85"
+                className="w-full max-w-[342px] md:w-max md:max-w-none text-white/85"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
@@ -34,7 +34,7 @@ export default function Home() {
               </motion.span>
             </h1>
             <motion.p
-              className="max-w-[620px] px-4 md:px-0 font-mono font-normal text-sm sm:text-base md:text-lg leading-relaxed md:leading-normal text-white/65 tracking-tight"
+              className="w-full max-w-[337px] md:max-w-[620px] px-0 font-mono font-normal text-[14px] md:text-lg leading-normal md:leading-normal text-white/65 tracking-[-0.84px] md:tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
@@ -44,7 +44,7 @@ export default function Home() {
           </div>
 
           <motion.div
-            className="flex flex-col sm:flex-row items-center sm:items-start gap-2.5"
+            className="flex flex-row items-start gap-2.5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
@@ -52,7 +52,7 @@ export default function Home() {
             {/* Youtube/Primary Button */}
             <a href="https://www.youtube.com/@Ground_ZeroYT" target="_blank" rel="noopener noreferrer">
               <motion.button
-                className="relative flex items-center justify-center h-12 w-max px-6 gap-4 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                className="relative flex items-center justify-center h-10 md:h-12 w-max px-[22px] md:px-6 gap-2.5 md:gap-4 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
                 whileHover={{
                   scale: 1.01,
                   backgroundColor: 'rgba(255, 255, 255, 0.65)',
@@ -61,15 +61,15 @@ export default function Home() {
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
               >
-                <span className="relative font-mono font-medium text-xl leading-normal text-[#5e3535] tracking-tight">
+                <span className="relative font-mono font-medium text-[16px] md:text-xl leading-normal text-[#5e3535] tracking-[-0.8px] md:tracking-tight">
                   Youtube
                 </span>
                 <Image
                   src="/youtube-logo.svg"
                   alt="Youtube"
-                  width={28}
-                  height={28}
-                  className="relative object-contain opacity-80"
+                  width={22}
+                  height={22}
+                  className="relative object-contain opacity-80 md:w-[28px] md:h-[28px]"
                 />
               </motion.button>
             </a>
@@ -77,7 +77,7 @@ export default function Home() {
             {/* Twitter/X Button */}
             <a href="https://x.com/groundzero_twt" target="_blank" rel="noopener noreferrer">
               <motion.button
-                className="relative flex items-center justify-center h-12 w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                className="relative flex items-center justify-center h-10 md:h-12 w-[42px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
                 whileHover={{
                   scale: 1.01,
                   backgroundColor: 'rgba(255, 255, 255, 0.65)',
@@ -89,9 +89,9 @@ export default function Home() {
                 <Image
                   src="/twitter-logo.svg"
                   alt="Twitter"
-                  width={28}
-                  height={28}
-                  className="relative object-contain opacity-80"
+                  width={22}
+                  height={22}
+                  className="relative object-contain opacity-80 md:w-[28px] md:h-[28px]"
                 />
               </motion.button>
             </a>
@@ -99,7 +99,7 @@ export default function Home() {
             {/* Discord Button */}
             <a href="https://discord.gg/aChCV3cbyn" target="_blank" rel="noopener noreferrer">
               <motion.button
-                className="relative flex items-center justify-center h-12 w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                className="relative flex items-center justify-center h-10 md:h-12 w-[44px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
                 whileHover={{
                   scale: 1.01,
                   backgroundColor: 'rgba(255, 255, 255, 0.65)',
@@ -111,9 +111,9 @@ export default function Home() {
                 <Image
                   src="/discord-logo.svg"
                   alt="Discord"
-                  width={32}
-                  height={32}
-                  className="relative object-contain opacity-80"
+                  width={24}
+                  height={24}
+                  className="relative object-contain opacity-80 md:w-[32px] md:h-[32px]"
                 />
               </motion.button>
             </a>

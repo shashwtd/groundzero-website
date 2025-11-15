@@ -68,7 +68,7 @@ export default function HeroBackground() {
       >
         {/* Cloud images - centered with creative parallax */}
         <motion.div
-          className="absolute -left-1/5 -bottom-32 w-[1038px] h-[461px] 2xl:scale-150 opacity-90"
+          className="absolute -left-1/5 -bottom-44 md:-bottom-32 w-[1038px] h-[461px] 2xl:scale-150 opacity-90"
           style={{
             x: cloudLeftX,
             y: cloudLeftY,
@@ -82,7 +82,7 @@ export default function HeroBackground() {
           />
         </motion.div>
         <motion.div
-          className="absolute -right-1/5 -bottom-32 w-[1038px] h-[461px] 2xl:scale-150 opacity-90"
+          className="absolute -right-1/5 -bottom-44 md:-bottom-32 w-[1038px] h-[461px] 2xl:scale-150 opacity-90"
           style={{
             x: cloudRightX,
             y: cloudRightY,
