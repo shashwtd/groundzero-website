@@ -191,9 +191,9 @@ export default function Partner() {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Text Content */}
-            <div className="bg-white/[0.05] backdrop-blur-xl px-5 md:px-12 py-8 md:py-12 border border-white/20">
+            <div className="bg-white/5 backdrop-blur-xl px-5 md:px-12 py-8 md:py-12 border border-white/20">
               <p className="font-mono font-normal text-[15px] md:text-[18px] leading-relaxed md:leading-relaxed tracking-tight text-white/80 text-justify">
-                We&apos;re building Ground Zero for researchers, builders, and founders doing amazing work. If you're a startup or brand that wants to collaborate or support what we're creating here, reach out. We're open to partnerships and creating values for each other.
+                We&apos;re building Ground Zero for researchers, builders, and founders doing amazing work. If you&apos;re a startup or brand that wants to collaborate or support what we&apos;re creating here, reach out. We&apos;re open to partnerships and creating values for each other.
               </p>
 
               <div className="mt-10 md:mt-12 pt-8 md:pt-10 border-t border-white/8">

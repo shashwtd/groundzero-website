@@ -108,7 +108,7 @@ export default function Signals() {
                         }}
                     >
                         {/* Text Content */}
-                        <div className="bg-white/[0.05] px-8 md:px-8 py-8 md:py-10 flex flex-col items-center justify-center gap-2.5">
+                        <div className="bg-white/5 px-8 md:px-8 py-8 md:py-10 flex flex-col items-center justify-center gap-2.5">
                             <div className="w-full space-y-4">
                                 {paragraphs.map((text, index) => (
                                     <p

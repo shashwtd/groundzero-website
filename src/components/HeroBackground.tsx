@@ -108,7 +108,7 @@ export default function HeroBackground() {
         {meteorTimings.map((timing, i) => (
           <motion.div
             key={i}
-            className="absolute w-[2px] h-[60px] bg-gradient-to-b from-white/60 to-transparent rounded-full"
+            className="absolute w-0.5 h-[60px] bg-linear-to-b from-white/60 to-transparent rounded-full"
             style={{
               left: `${10 + i * 12}%`,
               top: `-10%`,

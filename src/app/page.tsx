@@ -15,7 +15,7 @@ export default function Home() {
         {/* Hero content */}
         <div className="relative z-10 flex flex-col items-center gap-8 md:gap-12 pt-0 pb-20 md:pb-20 px-4 md:px-0">
           <div className="flex flex-col items-center justify-center gap-4 md:gap-6 text-center">
-            <h1 className="flex flex-col items-center gap-px font-serif text-[56px] md:text-[68px] leading-[56px] md:leading-18 tracking-[-3.92px] md:tracking-tighter">
+            <h1 className="flex flex-col items-center gap-px font-serif text-[56px] md:text-[68px] leading-14 md:leading-18 tracking-[-3.92px] md:tracking-tighter">
               <motion.span
                 className="w-full max-w-[342px] md:w-max md:max-w-none text-white"
                 initial={{ opacity: 0, y: 20 }}
@@ -69,7 +69,7 @@ export default function Home() {
                   alt="Youtube"
                   width={22}
                   height={22}
-                  className="relative object-contain opacity-80 md:w-[28px] md:h-[28px]"
+                  className="relative object-contain opacity-80 md:w-7 md:h-7"
                 />
               </motion.button>
             </a>
@@ -91,7 +91,7 @@ export default function Home() {
                   alt="Twitter"
                   width={22}
                   height={22}
-                  className="relative object-contain opacity-80 md:w-[28px] md:h-[28px]"
+                  className="relative object-contain opacity-80 md:w-7 md:h-7"
                 />
               </motion.button>
             </a>
@@ -99,7 +99,7 @@ export default function Home() {
             {/* Discord Button */}
             <a href="https://discord.gg/aChCV3cbyn" target="_blank" rel="noopener noreferrer">
               <motion.button
-                className="relative flex items-center justify-center h-10 md:h-12 w-[44px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                className="relative flex items-center justify-center h-10 md:h-12 w-11 md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
                 whileHover={{
                   scale: 1.01,
                   backgroundColor: 'rgba(255, 255, 255, 0.65)',
@@ -113,7 +113,7 @@ export default function Home() {
                   alt="Discord"
                   width={24}
                   height={24}
-                  className="relative object-contain opacity-80 md:w-[32px] md:h-[32px]"
+                  className="relative object-contain opacity-80 md:w-8 md:h-8"
                 />
               </motion.button>
             </a>
