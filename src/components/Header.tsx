@@ -4,9 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const navItems = [
-  { label: 'Spotlights', href: '/spotlights' },
   { label: 'Signals', href: '/signals' },
-  { label: 'Pods', href: '/podcasts' },
+  { label: 'Podcasts', href: '/podcasts' },
+  { label: 'Spotlights', href: '/spotlights' },
   { label: 'Partner', href: '/partner' },
 ];
 
@@ -51,10 +51,10 @@ export default function Header() {
               </span>
 
               {/* Left line that grows from left */}
-              <span className="absolute bottom-0 left-0 h-[2px] bg-white/90 w-0 group-hover:w-1/2 transition-all duration-300 ease-out" />
+              <span className="absolute bottom-0 left-0 h-0.5 bg-white/90 w-0 group-hover:w-1/2 transition-all duration-300 ease-out" />
 
               {/* Right line that grows from right */}
-              <span className="absolute bottom-0 right-0 h-[2px] bg-white/90 w-0 group-hover:w-1/2 transition-all duration-300 ease-out" />
+              <span className="absolute bottom-0 right-0 h-0.5 bg-white/90 w-0 group-hover:w-1/2 transition-all duration-300 ease-out" />
 
               {/* Subtle glow behind text */}
               <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-sm blur-sm -z-10 transition-all duration-200" />
