@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
 import { motion } from 'framer-motion';
 
@@ -22,7 +23,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
               >
-                Exploring the ideas and breakthroughs
+                Shaping the frontier while 
               </motion.span>
               <motion.span
                 className="w-full max-w-[342px] md:w-max md:max-w-none text-white/85"
@@ -30,7 +31,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
               >
-                shaping the future of AI and tech
+                exploring ideas <span className='md:hidden'><br /></span> and intelligence
               </motion.span>
             </h1>
             <motion.p
@@ -39,7 +40,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             >
-              Your friendly neighborhood space exploring AI/ML and tech, with occasional notes, conversations, and summaries.
+              Your friendly neighborhood creative space shaping the frontier of tech, with occasional conversations and notes.
             </motion.p>
           </div>
 
@@ -120,6 +121,7 @@ export default function Home() {
           </motion.div>
         </div>
       </main>
+      <Footer fixed color="text-[#C88367]/60" />
     </div>
   );
 }
