@@ -1,5 +1,25 @@
 import { NextResponse } from 'next/server';
 
+const CACHE_WINDOW_MS = 1000 * 60 * 60 * 12; // 12 hours
+
+type VideoPayload = {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  duration: string;
+  views: string;
+  uploadTime: string;
+  link: string;
+};
+
+type CachedResponse = {
+  videos: VideoPayload[];
+  lastUpdated: string;
+};
+
+const cache = new Map<string, { timestamp: number; data: CachedResponse }>();
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const playlistId = searchParams.get('playlistId');
@@ -14,50 +34,76 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'YouTube API key not configured' }, { status: 500 });
   }
 
+  const cached = cache.get(playlistId);
+  const now = Date.now();
+  const isFresh = cached && now - cached.timestamp < CACHE_WINDOW_MS;
+
+  if (isFresh && cached) {
+    return NextResponse.json(cached.data);
+  }
+
   try {
-    // Fetch playlist items
-    const playlistResponse = await fetch(
-      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${playlistId}&key=${API_KEY}`
-    );
-
-    if (!playlistResponse.ok) {
-      throw new Error('Failed to fetch playlist');
-    }
-
-    const playlistData = await playlistResponse.json();
-
-    // Get video IDs
-    const videoIds = playlistData.items.map((item: any) => item.contentDetails.videoId).join(',');
-
-    // Fetch video details (duration, views, etc.)
-    const videosResponse = await fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${videoIds}&key=${API_KEY}`
-    );
-
-    if (!videosResponse.ok) {
-      throw new Error('Failed to fetch video details');
-    }
-
-    const videosData = await videosResponse.json();
-
-    // Format the response with only the required data
-    const videos = videosData.items.map((video: any) => ({
-      id: video.id,
-      title: video.snippet.title,
-      description: video.snippet.description,
-      thumbnail: video.snippet.thumbnails.high.url,
-      duration: video.contentDetails.duration,
-      views: video.statistics.viewCount,
-      uploadTime: video.snippet.publishedAt,
-      link: `https://www.youtube.com/watch?v=${video.id}`,
-    }));
-
-    return NextResponse.json({ videos });
+    const freshData = await fetchPlaylistVideos(playlistId, API_KEY);
+    cache.set(playlistId, { timestamp: now, data: freshData });
+    return NextResponse.json(freshData);
   } catch (error) {
     console.error('YouTube API Error:', error);
+
+    if (cached) {
+      return NextResponse.json(cached.data);
+    }
+
     return NextResponse.json(
       { error: 'Failed to fetch videos' },
       { status: 500 }
     );
   }
+}
+
+async function fetchPlaylistVideos(playlistId: string, apiKey: string): Promise<CachedResponse> {
+  const playlistResponse = await fetch(
+    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${playlistId}&key=${apiKey}`,
+    { cache: 'no-store' }
+  );
+
+  if (!playlistResponse.ok) {
+    throw new Error('Failed to fetch playlist');
+  }
+
+  const playlistData = await playlistResponse.json();
+  const videoIds = playlistData.items.map((item: any) => item.contentDetails.videoId).filter(Boolean);
+
+  if (videoIds.length === 0) {
+    return {
+      videos: [],
+      lastUpdated: new Date().toISOString(),
+    };
+  }
+
+  const videosResponse = await fetch(
+    `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=${videoIds.join(',')}&key=${apiKey}`,
+    { cache: 'no-store' }
+  );
+
+  if (!videosResponse.ok) {
+    throw new Error('Failed to fetch video details');
+  }
+
+  const videosData = await videosResponse.json();
+
+  const videos = videosData.items.map((video: any) => ({
+    id: video.id,
+    title: video.snippet.title,
+    description: video.snippet.description,
+    thumbnail: video.snippet.thumbnails.high.url,
+    duration: video.contentDetails.duration,
+    views: video.statistics.viewCount,
+    uploadTime: video.snippet.publishedAt,
+    link: `https://www.youtube.com/watch?v=${video.id}`,
+  }));
+
+  return {
+    videos,
+    lastUpdated: new Date().toISOString(),
+  };
 }

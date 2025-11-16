@@ -67,6 +67,7 @@ export default function Podcasts() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
   const PLAYLIST_ID = 'PL-vuWWQkFkr-CyVjXDBhjoiElmibTC5jV';
 
@@ -79,6 +80,7 @@ export default function Podcasts() {
         }
         const data = await response.json();
         setVideos(data.videos);
+        setLastUpdated(data.lastUpdated ?? null);
       } catch (err) {
         setError('Failed to load videos');
         console.error(err);
@@ -89,6 +91,10 @@ export default function Podcasts() {
 
     fetchVideos();
   }, []);
+
+  const lastUpdatedLabel = lastUpdated
+    ? new Date(lastUpdated).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+    : null;
 
   return (
     <div className="relative flex flex-col items-center min-h-screen w-full overflow-hidden bg-[#1a1a1a]">
@@ -131,16 +137,38 @@ export default function Podcasts() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              Podcasts
+              GroundZero Podcasts
             </motion.h1>
             <motion.p
-              className="font-mono text-base md:text-lg text-white/60 text-center"
+              className="font-mono text-base md:text-lg max-w-xl text-white/60 text-center tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
-              ML, Maths and Conversations
+              Deep tech interesting conversations with amazing researchers, hackers and founders in AI
             </motion.p>
+            <motion.a
+              href={`https://www.youtube.com/playlist?list=${PLAYLIST_ID}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 relative inline-flex items-center justify-center h-10 md:h-12 px-5 md:px-6 gap-2 md:gap-3 bg-white/10 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.1)] cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{
+                scale: 1.01,
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <svg className="relative w-[18px] h-[18px] md:w-6 md:h-6" viewBox="0 0 24 24">
+                <path fill="#FF3333" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+                <path fill="#FFFFFF" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span className="relative font-mono font-medium text-sm md:text-base text-white/90 tracking-tight">
+                View Playlist
+              </span>
+            </motion.a>
           </div>
 
           {/* Loading State */}
@@ -195,14 +223,14 @@ export default function Podcasts() {
                   </div>
 
                   {/* Video Info */}
-                  <div className="flex-1 p-2 md:p-4 flex flex-col">
-                    <h3 className="font-mono text-[13px] md:text-base text-white/90 group-hover:text-[#628bb2] transition-colors duration-300 line-clamp-2 mb-1 md:mb-2 leading-tight md:leading-snug">
+                  <div className="flex-1 min-w-0 p-2 md:p-4 flex flex-col">
+                    <h3 className="font-mono text-[13px] md:text-base text-white/90 group-hover:text-[#628bb2] transition-colors duration-300 line-clamp-2 leading-tight md:leading-snug mb-auto">
                       {video.title}
                     </h3>
-                    <p className="font-mono text-[11px] md:text-xs text-white/50 group-hover:text-white/60 transition-colors duration-200 line-clamp-1 md:line-clamp-2 mb-2 md:mb-3 leading-relaxed hidden md:block">
+                    <p className="font-mono text-xs text-white/50 group-hover:text-white/60 transition-colors duration-200 mb-3 leading-relaxed hidden md:block overflow-hidden" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
                       {video.description}
                     </p>
-                    <div className="flex items-center gap-2 md:gap-3 font-mono text-[10px] md:text-xs text-white/40 group-hover:text-white/50 transition-colors duration-200 mt-auto">
+                    <div className="flex items-center gap-2 md:gap-3 font-mono text-[10px] md:text-xs text-white/40 group-hover:text-white/50 transition-colors duration-200">
                       <div className="flex items-center gap-1 md:gap-1.5">
                         <svg className="w-3 h-3 md:w-3.5 md:h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -222,6 +250,12 @@ export default function Podcasts() {
                 </motion.a>
               ))}
             </motion.div>
+          )}
+
+          {lastUpdatedLabel && (
+            <p className="font-mono text-[10px] md:text-xs text-white/35 text-center tracking-tight mt-6">
+              Last updated · {lastUpdatedLabel}
+            </p>
           )}
         </motion.article>
       </main>
