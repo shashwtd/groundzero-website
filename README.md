@@ -1,3 +1,5 @@
 ## Ground Zero
 
-#### LIVE AT groundzeroai.in
+#### LIVE AT https://www.groundzeroai.in
+
+### X/Twitter: https://x.com/groundzero_twt
