@@ -80,9 +80,9 @@ export default function Spotlights() {
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 >
                     {/* Title Section */}
-                    <div className="flex flex-col items-center gap-3 mb-12">
+                    <div className="flex flex-col items-center gap-3 mb-8 md:mb-12">
                         <motion.h1
-                            className="font-serif font-normal text-[40px] leading-none tracking-[-0.4px] text-white"
+                            className="font-serif font-normal text-[32px] md:text-[40px] leading-none tracking-[-0.4px] text-white text-center"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{
@@ -94,7 +94,7 @@ export default function Spotlights() {
                             Spotlights by Ground Zero
                         </motion.h1>
                         <motion.p
-                            className="font-mono text-lg text-white/60"
+                            className="font-mono text-base md:text-lg text-white/60 text-center"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{
@@ -117,7 +117,7 @@ export default function Spotlights() {
 
                     {/* Resources List */}
                     <motion.div
-                        className="bg-white/5 px-6 md:px-10 py-8 md:py-12"
+                        className="bg-white/5 px-4 md:px-6 lg:px-10 py-6 md:py-8 lg:py-12"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
@@ -126,7 +126,7 @@ export default function Spotlights() {
                             ease: [0.16, 1, 0.3, 1],
                         }}
                     >
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-2">
                             {resources.map((resource, index) => (
                                 <motion.li
                                     key={index}
@@ -142,13 +142,15 @@ export default function Spotlights() {
                                         href={resource.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="group flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-all duration-200"
+                                        className="group flex items-center gap-2.5 md:gap-3 p-2.5 md:p-3 rounded-lg hover:bg-white/5 transition-all duration-200"
                                     >
                                         {/* Favicon */}
-                                        <div className="shrink-0 w-5 h-5 relative rounded overflow-hidden bg-white/10">
-                                            <img
-                                                src={`https://www.google.com/s2/favicons?domain=${resource.domain}&sz=32`}
+                                        <div className="shrink-0 size-7 relative rounded overflow-hidden bg-white/10">
+                                            <Image
+                                                src={`https://www.google.com/s2/favicons?domain=${resource.domain}&sz=64`}
                                                 alt=""
+                                                width={64}
+                                                height={64}
                                                 className="w-full h-full object-cover"
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement;
@@ -159,17 +161,17 @@ export default function Spotlights() {
 
                                         {/* Title and URL */}
                                         <div className="flex-1 min-w-0">
-                                            <div className="font-mono text-[15px] md:text-[16px] text-white/90 group-hover:text-[#628bb2] transition-colors duration-200 wrap-break-word">
+                                            <div className="font-mono text-[13px] md:text-[15px] lg:text-[16px] text-white/90 group-hover:text-[#628bb2] transition-colors duration-200 wrap-break-word leading-snug">
                                                 {resource.title}
                                             </div>
-                                            <div className="font-mono text-xs text-white/40 group-hover:text-white/50 transition-colors duration-200 truncate">
+                                            <div className="font-mono text-[10px] md:text-xs text-white/40 group-hover:text-white/50 transition-colors duration-200 truncate mt-0.5">
                                                 {resource.domain}
                                             </div>
                                         </div>
 
                                         {/* External link icon */}
                                         <svg
-                                            className="shrink-0 w-4 h-4 text-white/30 group-hover:text-[#628bb2] transition-colors duration-200"
+                                            className="shrink-0 w-3.5 h-3.5 md:w-4 md:h-4 text-white/30 group-hover:text-[#628bb2] transition-colors duration-200"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
@@ -189,7 +191,7 @@ export default function Spotlights() {
 
                     {/* Closing Section */}
                     <motion.div
-                        className="mt-12 bg-white/5 px-6 md:px-10 py-8 md:py-10"
+                        className="mt-6 bg-white/5 px-6 md:px-10 py-8 md:py-10"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
