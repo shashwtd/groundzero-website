@@ -166,9 +166,9 @@ export default function ResearchersSignalsPage() {
           >
             <div className="space-y-14">
               <section className="space-y-5 pl-6">
-                <p className="text-[#f7cfa2] font-serif text-[26px] tracking-tight leading-tight">
+                {/* <p className="text-[#f7cfa2] font-serif text-[26px] tracking-tight leading-tight">
                   Ground Zero | SIGNALS.
-                </p>
+                </p> */}
                 {/* <p className="text-[#f7cfa2] font-serif text-[20px]">
                   <strong>For researchers and hackers</strong>
                 </p> */}
