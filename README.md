@@ -1,5 +1,5 @@
 ## Ground Zero
 
-#### LIVE AT https://www.groundzeroai.in
+#### SIGNALS LIVE AT https://www.groundzeroai.in
 
-#### X/Twitter: https://x.com/groundzero_twt
+#### Twitter: https://x.com/groundzero_twt
